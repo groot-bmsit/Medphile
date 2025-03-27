@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPhile - Healthcare Simplified</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #00b8d4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo-text span {
+            color: #00b8d4;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #666;
+            margin-left: 50px;
+            margin-top: -5px;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: #00b8d4;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Search bar */
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: #00b8d4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Quick queries */
+        .quick-queries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .query-button {
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .query-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .query-icon {
+            margin-right: 10px;
+            color: #00b8d4;
+        }
+
+        .arrow-icon {
+            margin-left: 10px;
+            background-color: #00b8d4;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* FAQ section */
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Navigation links */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00b8d4;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+            }
+
+            .hero-image {
+                margin-bottom: 30px;
+                max-width: 100%;
+            }
+
+            .hero-content {
+                padding-left: 0;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div class="logo-text"><span>Med</span>Phile</div>
+                </a>
+                <p class="tagline">Healthcare Simplified</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <h1 class="hero-title"><span>HealthGPT:</span> Your Personal HealthCare Companion</h1>
+                <p class="hero-description">Ask any health query to your personal healthcare companion offering tailor-made assistance and guidance 24x7.</p>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Enter your health query...">
+                    <button class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="quick-queries">
+                    <button class="query-button">
+                        <span class="query-icon">👨‍⚕</span>
+                        Find top doctor.
+                        <span class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="query-button">
+                        <span class="query-icon">🏥</span>
+                        Find top hospital.
+                        <span class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="query-button">
+                        <span class="query-icon">💰</span>
+                        Cost of laser surgery for piles
+                        <span class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="query-button">
+                        <span class="query-icon">🩺</span>
+                        Symptoms of Kidney Stones
+                        <span class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="query-button">
+                        <span class="query-icon">🔬</span>
+                        Risk factors associated with Liver Transplant
+                        <span class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdn.hexahealth.com/static/images/chat-banner.svg" alt="HealthGPT illustration" style="width: 100%; height: auto;">
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section container">
+            <h2 class="section-title">Frequently Asked Questions (FAQ)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is a HealthGPT healthcare chatbot?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>HealthGPT is an AI-powered healthcare chatbot designed to provide personalized health information, answer medical queries, and assist users in finding healthcare resources. It uses advanced natural language processing to understand your health concerns and provide relevant information.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does our medical chatbot work?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our medical chatbot uses artificial intelligence and machine learning algorithms trained on vast amounts of medical literature and clinical guidelines. When you ask a question, it analyzes your query, identifies key medical concepts, and provides evidence-based information tailored to your specific needs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What types of health queries can I ask on HealthGPT?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can ask about symptoms, medical conditions, treatment options, medication information, preventive care, lifestyle recommendations, and finding healthcare providers. HealthGPT can also help with understanding medical terminology and procedures.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is the HealthGPT service free to use?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, basic HealthGPT services are free to use. We offer premium subscription plans for advanced features such as personalized health tracking, detailed health reports, and priority access to medical professionals.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does MedPhile ensure the accuracy of its responses?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>MedPhile ensures accuracy through a multi-layered approach. Our AI is trained on peer-reviewed medical literature and regularly updated with the latest research. All information is reviewed by our medical advisory board consisting of licensed healthcare professionals. We also have quality control processes to monitor and improve response accuracy.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can HealthGPT diagnose medical conditions?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, HealthGPT cannot diagnose medical conditions. It provides information and guidance based on your symptoms or questions, but it is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for proper diagnosis and treatment plans.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is my personal information secure on HealthGPT?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we take data security and privacy very seriously. All personal information is encrypted and stored securely. We comply with HIPAA regulations and other relevant data protection laws. Your health information is never shared with third parties without your explicit consent.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I get advice on lifestyle and wellness through HealthGPT?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>HealthGPT can provide evidence-based advice on nutrition, exercise, stress management, sleep hygiene, and other wellness topics. You can ask specific questions about improving your lifestyle or request personalized recommendations based on your health goals.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can HealthGPT assist with medication-related questions?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>HealthGPT can provide information about medications including their uses, common side effects, potential interactions, and general dosing guidelines. However, always follow your healthcare provider's specific instructions for your medications and consult them before making any changes to your medication regimen.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is HealthGPT available 24/7?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, HealthGPT is available 24 hours a day, 7 days a week. You can access health information and guidance whenever you need it, regardless of time zone or holidays. This makes it a convenient resource for non-emergency health questions at any time.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can HealthGPT help me find doctors and hospitals near me?
+                    <span class="chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b8d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, HealthGPT can help you find healthcare providers and facilities in your area. You can search for specialists, primary care physicians, hospitals, clinics, and other healthcare services based on location, specialty, insurance acceptance, and patient ratings.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Offset for header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // FAQ accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', () => {
+                // Toggle current item
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    answer.classList.add('active');
+                } else {
+                    answer.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

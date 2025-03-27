@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology Treatments | MediPhile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0099cc;
+            --hover-color: #007bff;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+        }
+        
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text span:first-child {
+            color: var(--primary-color);
+        }
+        
+        .logo-text span:last-child {
+            color: #333;
+        }
+        
+        .logo-tagline {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-top: -5px;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-right: 20px;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 15px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link i {
+            margin-left: 5px;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            border-radius: 5px;
+            padding: 10px 0;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 8px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f0f8ff;
+            color: var(--primary-color);
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .whatsapp-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-btn i {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .phone-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-right: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .phone-btn:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .phone-btn i {
+            margin-right: 5px;
+        }
+        
+        .login-btn {
+            padding: 10px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        
+        /* Banner Styles */
+        .banner {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        /* Two Column Layout */
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .main-column {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        
+        .tab-link {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .tab-link.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .tab-link:hover:not(.active) {
+            color: #333;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toc-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+        }
+        
+        .toc-item {
+            margin-bottom: 12px;
+        }
+        
+        .toc-link {
+            text-decoration: none;
+            color: var(--primary-color);
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .toc-link:hover {
+            text-decoration: underline;
+        }
+        
+        .toc-number {
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .section-text {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .card-text {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Treatment Item */
+        .treatment-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .treatment-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .treatment-image {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .treatment-image img {
+            width: 100%;
+            border-radius: 8px;
+            height: auto;
+        }
+        
+        /* List Styles */
+        .bullet-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #444;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /* Appointment Form */
+        .appointment-form {
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            padding: 25px;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .form-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .phone-input-container {
+            display: flex;
+        }
+        
+        .country-code {
+            background-color: #f5f5f5;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .phone-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 0 8px 8px 0;
+            font-size: 16px;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--hover-color);
+        }
+        
+        .form-disclaimer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        .form-disclaimer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .form-disclaimer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                width: 100%;
+                margin-bottom: 15px;
+                flex-wrap: wrap;
+            }
+            
+            .nav-item {
+                margin: 5px 15px 5px 0;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .main-column, .sidebar {
+                width: 100%;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .treatment-item {
+                flex-direction: column;
+            }
+            
+            .treatment-content, .treatment-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div>
+                    <div class="logo-text">
+                        <span>Medi</span><span>Phile</span>
+                    </div>
+                    <span class="logo-tagline">Healthcare Simplified</span>
+                </div>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Departments <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Cardiology</a>
+                            <a href="#" class="dropdown-item">ENT</a>
+                            <a href="#" class="dropdown-item">Urology</a>
+                            <a href="#" class="dropdown-item">Neurosurgery</a>
+                            <a href="#" class="dropdown-item">Gynaecology</a>
+                            <a href="#" class="dropdown-item">Orthopaedic</a>
+                            <a href="#" class="dropdown-item">Ophthalmology</a>
+                            <a href="#" class="dropdown-item">Plastic Surgery</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Conditions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Gynaecology</a>
+                            <a href="#" class="dropdown-item">Orthopaedic</a>
+                            <a href="#" class="dropdown-item">Urology</a>
+                            <a href="#" class="dropdown-item">Cardiology</a>
+                            <a href="#" class="dropdown-item">Nephrology</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Treatments <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Weight Loss Surgery</a>
+                            <a href="#" class="dropdown-item">ENT</a>
+                            <a href="#" class="dropdown-item">Neurology</a>
+                            <a href="#" class="dropdown-item">Transplant</a>
+                            <a href="#" class="dropdown-item">Proctology</a>
+                            <a href="#" class="dropdown-item">Laparoscopy</a>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="#" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+918860688606" class="phone-btn">
+                        <i class="fas fa-phone-alt"></i>
+                        +91 8860688606
+                    </a>
+                    <a href="#" class="login-btn">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="container">
+            Get Second Opinion from Top Surgeons! Book an Appointment »
+        </div>
+    </div>
+    
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Neurology Treatments: Overview, Procedures & Specialists</h1>
+            
+            <div class="content-wrapper">
+                <div class="main-column">
+                    <!-- Tab Navigation -->
+                    <div class="tab-navigation">
+                        <a href="#" class="tab-link active">Overview</a>
+                        <a href="#" class="tab-link">Doctors</a>
+                        <a href="#" class="tab-link">Hospitals</a>
+                        <a href="#" class="tab-link">Cost</a>
+                    </div>
+                    
+                    <!-- Table of Contents -->
+                    <div class="toc">
+                        <h2 class="toc-title">Table of Contents</h2>
+                        <ol class="toc-list">
+                            <li class="toc-item">
+                                <a href="#what-is-neurology" class="toc-link">
+                                    <span class="toc-number">1</span>
+                                    <span>What is Neurology?</span>
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#common-conditions" class="toc-link">
+                                    <span class="toc-number">2</span>
+                                    <span>Common Neurological Conditions</span>
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#treatments" class="toc-link">
+                                    <span class="toc-number">3</span>
+                                    <span>Neurological Treatments & Procedures</span>
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#when-to-see" class="toc-link">
+                                    <span class="toc-number">4</span>
+                                    <span>When to See a Neurologist?</span>
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#finding-specialist" class="toc-link">
+                                    <span class="toc-number">5</span>
+                                    <span>Finding the Right Neurological Specialist</span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Content Sections -->
+                    <section id="what-is-neurology" class="content-section">
+                        <h2 class="section-title">What is Neurology?</h2>
+                        <p class="section-text">
+                            Neurology is a branch of medicine that deals with disorders of the nervous system, which includes the brain, spinal cord, peripheral nerves, and muscles. Neurologists are medical specialists who diagnose, treat, and manage disorders that affect the nervous system.
+                        </p>
+                        <p class="section-text">
+                            The nervous system is a complex, sophisticated system that regulates and coordinates body activities. It has two major divisions:
+                        </p>
+                        <ul class="bullet-list">
+                            <li><strong>Central Nervous System (CNS):</strong> Consists of the brain and spinal cord</li>
+                            <li><strong>Peripheral Nervous System (PNS):</strong> Includes all the nerves that connect the CNS to the rest of the body</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="common-conditions" class="content-section">
+                        <h2 class="section-title">Common Neurological Conditions</h2>
+                        <div class="card-grid">
+                            <div class="card">
+                                <h3 class="card-title">Hydrocephalus</h3>
+                                <p class="card-text">
+                                    A condition where excess cerebrospinal fluid (CSF) builds up within the ventricles of the brain, often treated with VP shunt procedures.
+                                </p>
+                            </div>
+                            
+                            <div class="card">
+                                <h3 class="card-title">Epilepsy</h3>
+                                <p class="card-text">
+                                    A neurological disorder characterized by recurrent seizures due to abnormal electrical activity in the brain.
+                                </p>
+                            </div>
+                            
+                            <div class="card">
+                                <h3 class="card-title">Parkinson's Disease</h3>
+                                <p class="card-text">
+                                    A progressive nervous system disorder that affects movement, often causing tremors, stiffness, and difficulty with balance.
+                                </p>
+                            </div>
+                            
+                            <div class="card">
+                                <h3 class="card-title">Multiple Sclerosis</h3>
+                                <p class="card-text">
+                                    A disease in which the immune system eats away at the protective covering of nerves, causing communication problems between the brain and the rest of the body.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="treatments" class="content-section">
+                        <h2 class="section-title">Neurological Treatments & Procedures</h2>
+                        
+                        <div class="treatment-item">
+                            <div class="treatment-content">
+                                <h3 class="section-subtitle">VP Shunt Procedure</h3>
+                                <p class="section-text">
+                                    A Ventriculoperitoneal (VP) shunt is a medical device that relieves pressure on the brain caused by fluid accumulation. It consists of a long, flexible tube with a valve that helps drain excess cerebrospinal fluid from the brain's ventricles to the peritoneal cavity in the abdomen, where it can be absorbed.
+                                </p>
+                                <a href="#" class="toc-link">Learn more about VP Shunt Procedure →</a>
+                            </div>
+                            <div class="treatment-image">
+                                <img src="data:image/jpeg;base64,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" alt="VP Shunt Procedure">
+                            </div>
+                        </div>
+                        
+                        <div class="treatment-item">
+                            <div class="treatment-content">
+                                <h3 class="section-subtitle">Deep Brain Stimulation</h3>
+                                <p class="section-text">
+                                    Deep Brain Stimulation (DBS) involves implanting electrodes in specific areas of the brain. These electrodes produce electrical impulses that regulate abnormal impulses or affect certain cells and chemicals in the brain. The amount of stimulation is controlled by a pacemaker-like device placed under the skin in the upper chest.
+                                </p>
+                                <p class="section-text">
+                                    DBS is commonly used to treat movement disorders such as Parkinson's disease, essential tremor, and dystonia when medications are not effective.
+                                </p>
+                            </div>
+                            <div class="treatment-image">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU4Jot_3zHlT7C5DAW5dLo5CsjXm9oXgQmKQ&s" alt="Deep Brain Stimulation">
+                            </div>
+                        </div>
+                        
+                        <div class="treatment-item">
+                            <div class="treatment-content">
+                                <h3 class="section-subtitle">Epilepsy Surgery</h3>
+                                <p class="section-text">
+                                    Epilepsy surgery is a procedure that removes or alters an area of the brain where seizures originate. It's typically considered when medications fail to control seizures effectively. The goal is to eliminate or reduce the frequency and severity of seizures.
+                                </p>
+                                <p class="section-text">
+                                    Types of epilepsy surgery include:
+                                </p>
+                                <ul class="bullet-list">
+                                    <li>Resective surgery (removing the portion of the brain causing seizures)</li>
+                                    <li>Laser interstitial thermal therapy (LITT)</li>
+                                    <li>Corpus callosotomy (cutting the connection between brain hemispheres)</li>
+                                    <li>Vagus nerve stimulation</li>
+                                </ul>
+                            </div>
+                            <div class="treatment-image">
+                                <img src="data:image/jpeg;base64,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" alt="Epilepsy Surgery">
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="when-to-see" class="content-section">
+                        <h2 class="section-title">When to See a Neurologist?</h2>
+                        <p class="section-text">
+                            You should consider consulting a neurologist if you experience any of the following symptoms:
+                        </p>
+                        <ul class="bullet-list">
+                            <li>Chronic or severe headaches</li>
+                            <li>Dizziness or balance problems</li>
+                            <li>Numbness or tingling in extremities</li>
+                            <li>Memory problems or confusion</li>
+                            <li>Seizures or tremors</li>
+                            <li>Coordination problems</li>
+                            <li>Vision problems</li>
+                            <li>Sleep disorders</li>
+                        </ul>
+                        <p class="section-text">
+                            Early diagnosis and treatment of neurological disorders can significantly improve outcomes and quality of life.
+                        </p>
+                    </section>
+                    
+                    <section id="finding-specialist" class="content-section">
+                        <h2 class="section-title">Finding the Right Neurological Specialist</h2>
+                        <p class="section-text">
+                            When seeking treatment for neurological conditions, it's important to find a specialist with expertise in your specific condition. HexaHealth connects you with top neurologists and neurosurgeons across India.
+                        </p>
+                        <div class="highlight-box">
+                            <p class="section-text">
+                                Our network includes specialists in:
+                            </p>
+                            <ul class="bullet-list">
+                                <li>General Neurology</li>
+                                <li>Neurosurgery</li>
+                                <li>Pediatric Neurology</li>
+                                <li>Movement Disorders</li>
+                                <li>Epilepsy</li>
+                                <li>Neuro-oncology</li>
+                            </ul>
+                            <a href="#" class="submit-btn" style="display: inline-block; width: auto; padding: 10px 20px; margin-top: 10px; text-decoration: none;">
+                                Find a Neurologist Near You
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- Sidebar - Appointment Form -->
+                <div class="sidebar">
+                    <div class="appointment-form">
+                        <h2 class="form-title">Book Appointment for Neurology Consultation</h2>
+                        
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Enter Your Name*" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="phone-input-container">
+                                    <div class="country-code">+91</div>
+                                    <input type="tel" class="phone-input" placeholder="Enter 10 Digit Mobile Number*" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select class="form-select" required>
+                                    <option value="" selected disabled>Select City</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="mumbai">Mumbai</option>
+                                    <option value="bangalore">Bangalore</option>
+                                    <option value="chennai">Chennai</option>
+                                    <option value="hyderabad">Hyderabad</option>
+                                    <option value="kolkata">Kolkata</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Book Appointment</button>
+                            
+                            <p class="form-disclaimer">
+                                *By proceeding, you agree to our <a href="#">terms and conditions</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab Navigation
+            const tabLinks = document.querySelectorAll('.tab-link');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs
+                    tabLinks.forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                });
+            });
+            
+            // Smooth scrolling for TOC links
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form submission
+            const appointmentForm = document.querySelector('.appointment-form form');
+            
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const nameInput = this.querySelector('input[type="text"]');
+                const phoneInput = this.querySelector('input[type="tel"]');
+                const citySelect = this.querySelector('select');
+                
+                if (nameInput.value && phoneInput.value && citySelect.value) {
+                    alert('Thank you! Your appointment request has been submitted. We will contact you shortly.');
+                    this.reset();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>       neurology
